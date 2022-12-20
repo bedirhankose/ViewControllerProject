@@ -13,11 +13,13 @@ class SecondViewController: UIViewController {
     
     @IBOutlet weak var FoundPasswordLabel: UILabel!
     
+    var givenPassword = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        FoundPasswordLabel.text = givenPassword
     }
     
 

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     
-    
+    var takenPassword = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,24 @@ class ViewController: UIViewController {
 
     @IBAction func CheckButtonTapped(_ sender: Any) {
         
-        performSegue(withIdentifier: "toSecondVC", sender: nil)
+        takenPassword = textField.text!
+        
+        if takenPassword == "BK" {
+            performSegue(withIdentifier: "toSecondVC", sender: nil)
+
+        }else {
+            FirstLabel.text = "Try again!!!"
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toSecondVC" {
+            let destinationVC = segue.destination as! SecondViewController
+            
+            destinationVC.givenPassword = takenPassword
+        }
+        
     }
     
 }
